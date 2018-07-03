@@ -135,10 +135,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AudioSystem.h" />
+    <ClInclude Include="color.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="math.h" />
+    <ClInclude Include="matrix22.h" />
+    <ClInclude Include="matrix33.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="vector2D.h" />
+    <ClInclude Include="vector3D.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AudioSystem.cpp" />
+    <ClCompile Include="color.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="math.cpp" />
+    <ClCompile Include="matrix22.cpp" />
+    <ClCompile Include="matrix33.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="vector2D.cpp" />
+    <ClCompile Include="vector3D.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
