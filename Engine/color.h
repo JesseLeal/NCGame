@@ -17,6 +17,19 @@ public:
 	const float& operator [] (size_t index) const { assert(index <= 2); return ((&r)[index]); }
 
 	char ConvertU8(size_t index) const { assert(index <= 2); return static_cast<char>(Math::Clamp01((&r)[index]) * 255.0f); }
+	operator SDL_Color() const
+	{
+		SDL_Color color;
+		color.r = ConvertU8(0);
+		color.g = ConvertU8(1);
+		color.b = ConvertU8(2);
+		color.a = 255;
+
+		return color;
+	}
+
+	bool operator == (const Color & v) const { return Math::IsZero(r - v.r) && Math::IsZero(g - v.g) && Math::IsZero(b - v.b); }
+	bool operator != (const Color & v) const { return !(*this == v); }
 
 	Color& operator += (const Color & color) { r += color.r; g += color.g; b += color.b; return *this; }
 	Color& operator -= (const Color & color) { r -= color.r; g -= color.g; b += color.b; return *this; }

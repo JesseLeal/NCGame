@@ -1,8 +1,8 @@
 #pragma once
 
-#include "engine.h"
+#include "Engine.h"
 
-namespace  Math
+namespace Math
 {
 	constexpr float PI = 3.1415f;
 	constexpr float TwoPI = PI * 2.0f;

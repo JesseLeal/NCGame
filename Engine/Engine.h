@@ -1,12 +1,12 @@
 #pragma once
-#include <iostream>
-#include "SDL.h"
 
 #ifdef ENGINE_EXPORTS  
 #define ENGINE_API __declspec(dllexport)   
 #else  
 #define ENGINE_API __declspec(dllimport)   
 #endif 
+
+#include "sdl.h"
 
 class TextureManager;
 
@@ -28,11 +28,6 @@ public:
 	bool isQuit()
 	{
 		return m_isQuit;
-	}
-
-	void Display()
-	{
-		std::cout << "Hello World!" << std::endl;
 	}
 
 protected:

@@ -7,14 +7,13 @@
 #include "vector2D.h"
 #include "matrix22.h"
 #include "Timer.h"
-
-//BUILD:
-//InputManager
-//Renderer
-//AudioSystem
+#include <iostream>
+#include "Text.h"
+#include "TextManager.h"
 
 Vector2D position(400.0f, 300.0f);
 float angle = 0.0f;
+Text* text;
 
 bool Engine::Initialize()
 {
@@ -24,8 +23,17 @@ bool Engine::Initialize()
 	Timer::Instance()->Initialize(this);
 	Renderer::Instance()->Initialize(this);
 	TextureManager::Instance()->Initialize(this);
-	TextureManager::Instance()->Initialize(this);
+	TextManager::Instance()->Initialize(this);
 	AudioSystem::Instance()->Initialize(this);
+	InputManager::Instance()->Initialize(this);
+
+	InputManager::Instance()->AddAction("fire", SDL_SCANCODE_SPACE, InputManager::eDevice::KEYBOARD);
+	InputManager::Instance()->AddAction("left", SDL_SCANCODE_LEFT, InputManager::eDevice::KEYBOARD);
+	InputManager::Instance()->AddAction("right", SDL_SCANCODE_RIGHT, InputManager::eDevice::KEYBOARD);
+	InputManager::Instance()->AddAction("steer", InputManager::eAxis::X, InputManager::eDevice::MOUSE);
+	InputManager::Instance()->AddAction("DashDance", SDL_CONTROLLER_AXIS_LEFTX, InputManager::eDevice::CONTROLLER);
+
+	text = TextManager::Instance()->CreateText("", "..\\Content\\jokerman.TTF", 20, Color::red);
 
 	return true;
 }
@@ -34,6 +42,8 @@ void Engine::Update()
 {
 	Timer::Instance()->Update();
 	//Timer::Instance()->SetTimeScale(5.0f);
+
+	InputManager::Instance()->Update();
 
 	SDL_Event event;
 	SDL_PollEvent(&event);
@@ -49,8 +59,31 @@ void Engine::Update()
 		}
 	}
 
+	SDL_PumpEvents();
+
 	int x, y;
 	SDL_GetMouseState(&x, &y);
+
+
+	if (InputManager::Instance()->GetButtonState(SDL_CONTROLLER_BUTTON_A, InputManager::eDevice::CONTROLLER) == InputManager::eButtonState::PRESSED)
+	{
+		std::cout << "An a press is an a press, you can't say it's only a half" << std::endl;
+	}
+	if (InputManager::Instance()->GetActionButton("fire") == InputManager::eButtonState::PRESSED)
+	{
+		std::cout << "gun" << std::endl;
+	}
+	if (InputManager::Instance()->GetAxisAbsolute(SDL_CONTROLLER_AXIS_LEFTX, InputManager::eDevice::CONTROLLER) == 0.0f)
+	{
+		std::cout << "DASHU" << std::endl;
+	}
+	if (InputManager::Instance()->GetAxisAbsolute(SDL_CONTROLLER_AXIS_LEFTX, InputManager::eDevice::CONTROLLER) == 1.0f)
+	{
+		std::cout << "DANCEU" << std::endl;
+	}
+
+	float steer = InputManager::Instance()->GetActionAxisRelative("steer");
+	angle += (steer * 20.0f) * Timer::Instance()->DeltaTime();
 
 	Vector2D force = Vector2D::zero;
 
@@ -60,9 +93,9 @@ void Engine::Update()
 	if (keystate[SDL_SCANCODE_RIGHT])
 		angle += 180.0f * Timer::Instance()->DeltaTime();
 	if (keystate[SDL_SCANCODE_DOWN])
-		force.y += 0.3f;
+		force.y += 0.5f;
 	if (keystate[SDL_SCANCODE_UP])
-		force.y += -0.3f;
+		force.y += -0.5f;
 
 	Matrix22 mx;
 	mx.Rotate(angle * Math::DegreesToRadians);
@@ -85,6 +118,10 @@ void Engine::Update()
 
 	Renderer::Instance()->SetColor(Color::black);
 	Renderer::Instance()->DrawTexture(texture, position, angle);
+
+	std::vector<Color> colors = { Color::red, Color::white, Color::green, Color::yellow };
+	text->SetText("Way past cool", colors[rand() % colors.size()]);
+	text->Draw(Vector2D(10.0f, 10.0f), 0.0f);
 
 	Renderer::Instance()->EndFrame();
 
@@ -109,8 +146,9 @@ void Engine::Shutdown()
 	Timer::Instance()->Shutdown();
 	Renderer::Instance()->Shutdown();
 	TextureManager::Instance()->Shutdown();
-	TextureManager::Instance()->Shutdown();
+	TextManager::Instance()->Shutdown();
 	AudioSystem::Instance()->Shutdown();
+
 
 	SDL_DestroyRenderer(m_renderer);
 	SDL_DestroyWindow(m_window);
