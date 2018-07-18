@@ -1,2 +1,4 @@
-﻿  Engine.cpp
+﻿  Component.cpp
+  Entity.cpp
+  Generating Code...
   Engine.vcxproj -> C:\Users\Jesse Leal\source\repos\Game Libraries\NCGame\Debug\Engine.dll

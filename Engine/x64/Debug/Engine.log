@@ -1,17 +1,5 @@
 ﻿  AudioSystem.cpp
-  color.cpp
   Engine.cpp
-  InputManager.cpp
-  math.cpp
-  matrix22.cpp
-  matrix33.cpp
-  Renderer.cpp
-  Text.cpp
-  TextManager.cpp
-  TextureManager.cpp
-  Timer.cpp
-  vector2D.cpp
-  vector3D.cpp
   Generating Code...
      Creating library C:\Users\Jesse Leal\source\repos\Game Libraries\NCGame\x64\Debug\Engine.lib and object C:\Users\Jesse Leal\source\repos\Game Libraries\NCGame\x64\Debug\Engine.exp
   Engine.vcxproj -> C:\Users\Jesse Leal\source\repos\Game Libraries\NCGame\x64\Debug\Engine.dll

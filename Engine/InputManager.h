@@ -5,7 +5,7 @@
 #include <vector>
 #include <map>
 
-class InputManager : public Singleton<InputManager>
+class ENGINE_API InputManager : public Singleton<InputManager>
 {
 public:
 	enum eButtonState
@@ -64,6 +64,8 @@ public:
 	float GetAxisRelative(int id, eDevice device = eDevice::MOUSE, int index = 0);
 
 	eButtonState GetButtonState(int id, eDevice device = eDevice::KEYBOARD, int index = 0);
+
+	int GetNumControllers();
 	
 protected:
 	bool GetButtonDown(int id, eDevice device, int index = 0);
