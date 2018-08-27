@@ -1,12 +1,14 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "Engine.h"
 
-class ID
+class ENGINE_API ID
 {
 public:
 	ID();
 	ID(const std::string& id) : m_id(id) {}
+	ID(const char* id) : m_id(id) {}
 
 	bool operator == (const ID& id) const
 	{

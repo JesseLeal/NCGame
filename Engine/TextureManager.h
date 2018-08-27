@@ -9,7 +9,7 @@ public:
 	bool Initialize(Engine* engine);
 	void Shutdown();
 
-	SDL_Texture* getTexture(const std::string& textureName);
+	SDL_Texture* GetTexture(const std::string& textureName);
 
 public:
 	TextureManager() {}

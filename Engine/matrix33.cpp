@@ -1,4 +1,4 @@
-#include "matrix33.h"
+#include "Matrix33.h"
 
 const Matrix33 Matrix33::identity = Matrix33(Vector3D(1.0f, 0.0f, 0.0f), Vector3D(0.0f, 1.0f, 0.0f), Vector3D(0.0f, 0.0f, 1.0f));
 

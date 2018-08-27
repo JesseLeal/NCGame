@@ -32,8 +32,15 @@ public:
 		return m_isQuit;
 	}
 
+	bool isDebug()
+	{
+		return m_isDebug;
+	}
+
+
 protected:
 	bool m_isQuit = false;
+	bool m_isDebug = false;
 	SDL_Window * m_window = nullptr;
 	SDL_Renderer* m_renderer = nullptr;
 	SDL_Texture* m_texture = nullptr;

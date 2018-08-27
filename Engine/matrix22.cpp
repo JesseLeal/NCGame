@@ -1,4 +1,4 @@
-#include "matrix22.h"
+#include "Matrix22.h"
 
 const Matrix22 Matrix22::identity = Matrix22(Vector2D(1.0f, 0.0f), Vector2D(0.0f, 1.0f));
 

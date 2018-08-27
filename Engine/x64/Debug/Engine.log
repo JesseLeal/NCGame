@@ -1,5 +1,2 @@
-﻿  AudioSystem.cpp
-  Engine.cpp
-  Generating Code...
-     Creating library C:\Users\Jesse Leal\source\repos\Game Libraries\NCGame\x64\Debug\Engine.lib and object C:\Users\Jesse Leal\source\repos\Game Libraries\NCGame\x64\Debug\Engine.exp
+﻿  InputManager.cpp
   Engine.vcxproj -> C:\Users\Jesse Leal\source\repos\Game Libraries\NCGame\x64\Debug\Engine.dll

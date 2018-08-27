@@ -1,6 +1,6 @@
 #pragma once
 #include "Singleton.h"
-#include "engine.h"
+#include "Engine.h"
 #include <string>
 #include "fmod.hpp"
 #include <map>
@@ -11,7 +11,7 @@ public:
 	AudioSystem() {}
 	~AudioSystem() {}
 
-	void AddSound(const std::string& id, const std::string& filename);
+	void AddSound(const std::string& id, const std::string& audioname);
 	void PlaySound(const std::string& id, bool loop);
 	void RemoveSound(const std::string& id);
 

@@ -25,12 +25,18 @@
     <Filter Include="Components">
       <UniqueIdentifier>{4f98e837-9735-415c-8caf-65051c87f2d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{e27dcde8-6eb5-48c1-8c1d-174cae646005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{d3def286-5220-4321-9102-c06940637512}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{7de34c6c-103a-4901-bea8-73eb69d92506}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Singleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
@@ -38,21 +44,6 @@
     </ClInclude>
     <ClInclude Include="AudioSystem.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="matrix22.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="matrix33.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="vector2D.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="vector3D.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="color.h">
-      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="TextureManager.h">
       <Filter>Graphics</Filter>
@@ -69,9 +60,6 @@
     <ClInclude Include="TextManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="_math.h">
-      <Filter>Math</Filter>
-    </ClInclude>
     <ClInclude Include="ID.h">
       <Filter>Objects</Filter>
     </ClInclude>
@@ -84,6 +72,102 @@
     <ClInclude Include="Component.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="RenderComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix22.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix33.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3D.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="_Math.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="KinematicComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Aabb.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="AabbComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="TextComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="EventReciever.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Variant.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Waypoint.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugDraw.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="WaypointControllerComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformControllerComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -94,21 +178,6 @@
     </ClCompile>
     <ClCompile Include="AudioSystem.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="matrix22.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="matrix33.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="vector2D.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="vector3D.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="color.cpp">
-      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="TextureManager.cpp">
       <Filter>Graphics</Filter>
@@ -125,9 +194,6 @@
     <ClCompile Include="TextManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="_math.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
     <ClCompile Include="ID.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
@@ -138,6 +204,81 @@
       <Filter>Objects</Filter>
     </ClCompile>
     <ClCompile Include="Component.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix22.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix33.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3D.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="_Math.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="KinematicComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Aabb.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="AabbComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="TextComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Waypoint.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugDraw.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="WaypointControllerComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformControllerComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,9 +1,38 @@
-﻿  AudioSystem.cpp
+﻿  Aabb.cpp
+  AabbComponent.cpp
+  AnimationComponent.cpp
+  Color.cpp
+  Component.cpp
+  ControllerComponent.cpp
+  DebugDraw.cpp
   Engine.cpp
+  Entity.cpp
+  EventManager.cpp
+  InputManager.cpp
+  KinematicComponent.cpp
+  Matrix22.cpp
+  Matrix33.cpp
+  Physics.cpp
+  Renderer.cpp
+  Scene.cpp
+  SpriteComponent.cpp
+  StateMachine.cpp
+  Text.cpp
+  Compiling...
+  TextComponent.cpp
+  TextManager.cpp
+  Texture.cpp
+  TextureManager.cpp
+  Timer.cpp
+  Transform.cpp
+  Vector2D.cpp
+  Vector3D.cpp
+  Waypoint.cpp
+  _Math.cpp
      Creating library C:\Users\Jesse Leal\source\repos\Game Libraries\NCGame\Release\Engine.lib and object C:\Users\Jesse Leal\source\repos\Game Libraries\NCGame\Release\Engine.exp
   Generating code
-  224 of 877 functions (25.5%) were compiled, the rest were copied from previous compilation.
-    120 functions were new in current compilation
-    65 functions had inline decision re-evaluated but remain unchanged
+  24 of 1969 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
+    6 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Engine.vcxproj -> C:\Users\Jesse Leal\source\repos\Game Libraries\NCGame\Release\Engine.dll

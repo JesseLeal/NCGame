@@ -184,7 +184,7 @@ InputManager::eButtonState InputManager::GetButtonState(int id, eDevice device, 
 
 int InputManager::GetNumControllers()
 {
-	return m_controllers.size();
+	return (int)m_controllers.size();
 }
 
 bool InputManager::GetButtonDown(int id, eDevice device, int index)

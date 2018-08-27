@@ -1,10 +1,10 @@
 #pragma once
 
-#include "engine.h"
-#include "singleton.h"
-#include "color.h"
-#include "vector2D.h"
-#include "text.h"
+#include "Engine.h"
+#include "Singleton.h"
+#include "Color.h"
+#include "Vector2D.h"
+#include "Text.h"
 #include <string>
 #include <vector>
 

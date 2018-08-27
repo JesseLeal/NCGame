@@ -1,7 +1,7 @@
 #pragma once
 #include "Singleton.h"
-#include "engine.h"
-#include "vector2D.h"
+#include "Engine.h"
+#include "Vector2D.h"
 #include <vector>
 #include <map>
 

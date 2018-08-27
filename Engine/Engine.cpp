@@ -10,12 +10,16 @@
 #include <iostream>
 #include "Text.h"
 #include "TextManager.h"
+#include "Physics.h"
+#include "FileSystem.h"
 
 bool Engine::Initialize()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	m_window = SDL_CreateWindow("Thank You So Much-a For Playing My Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
 
+	FileSystem::Instance()->Initialize(this);
+	Physics::Instance()->Initialize(this);
 	Timer::Instance()->Initialize(this);
 	Renderer::Instance()->Initialize(this);
 	TextureManager::Instance()->Initialize(this);
@@ -29,9 +33,11 @@ bool Engine::Initialize()
 void Engine::Update()
 {
 	Timer::Instance()->Update();
-	//Timer::Instance()->SetTimeScale(5.0f);
+	//Timer::Instance()->SetTimeScale(1.0f);
 	InputManager::Instance()->Update();
 	AudioSystem::Instance()->Update();
+	Physics::Instance()->Update();
+	FileSystem::Instance()->Update();
 
 	SDL_Event event;
 	SDL_PollEvent(&event);
@@ -48,6 +54,11 @@ void Engine::Update()
 	}
 
 	SDL_PumpEvents();
+
+	if (InputManager::Instance()->GetButtonState(SDL_SCANCODE_GRAVE) == InputManager::eButtonState::PRESSED)
+	{
+		m_isDebug = !m_isDebug;
+	}
 }
 
 void Engine::Shutdown()
@@ -57,9 +68,11 @@ void Engine::Shutdown()
 	TextureManager::Instance()->Shutdown();
 	TextManager::Instance()->Shutdown();
 
-	AudioSystem::Instance()->RemoveSound("oof");
+	//AudioSystem::Instance()->RemoveSound("oof");
 
 	AudioSystem::Instance()->Shutdown();
+	Physics::Instance()->Shutdown();
+	FileSystem::Instance()->Shutdown();
 
 	SDL_DestroyRenderer(m_renderer);//move this
 	SDL_DestroyWindow(m_window);

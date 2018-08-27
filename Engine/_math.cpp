@@ -1,4 +1,4 @@
-#include "_math.h"
+#include "_Math.h"
 #include <math.h>
 #include <algorithm>
 
@@ -33,6 +33,19 @@ namespace Math
 	float LerpUnclamped(float v1, float v2, float t)
 	{
 		return (v1 * (1.0f - t) + v2 * t);
+	}
+
+	ENGINE_API float LerpDegrees(float v1, float v2, float t)
+	{
+		float dv = ::fabs(v2 - v1);
+		if (dv > 180.0f)
+		{
+			if (v2 > v1)
+				v1 += 360.0f;
+			else
+				v2 += 360.0f;
+		}
+		return Lerp(v1, v2, t);
 	}
 	
 	bool IsZero(float value)

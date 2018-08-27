@@ -1,7 +1,7 @@
 #pragma once
 
-#include "_math.h"
-#include "vector2D.h"
+#include "_Math.h"
+#include "Vector2D.h"
 #include <assert.h>
 
 class ENGINE_API Vector3D

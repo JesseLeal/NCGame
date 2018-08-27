@@ -1,6 +1,6 @@
 #pragma once
 
-#include "_math.h"
+#include "_Math.h"
 #include <assert.h>
 
 class ENGINE_API Color
