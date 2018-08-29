@@ -11,8 +11,7 @@
 #include "WaypointControllerComponent.h"
 #include "TransformControllerComponent.h"
 #include "Timer.h"
-
-std::vector<Vector2D> Enemy::m_enterPath = { Vector2D(200.0f, 400.0f), Vector2D(300.0f, 300.0f), Vector2D(200.0f, 200.0f), Vector2D(100.0f, 300.0f), Vector2D(200.0f, 400.0f) };
+#include "Formation.h"
 
 void Enemy::Create(const Info & info)
 {
@@ -20,7 +19,7 @@ void Enemy::Create(const Info & info)
 
 	m_info = info;
 	m_transform.scale = Vector2D(2.0f, 2.0f);
-	m_transform.position = (m_info.side == LEFT) ? Vector2D(-64.0f, 400.0f) : Vector2D(864.0f, 400.0f);
+	m_transform.position = Vector2D::zero;
 
 	SpriteComponent* spriteComp = AddComponent<SpriteComponent>();
 	spriteComp->Create("enemy01A.png", Vector2D(0.5f, 0.5f));
@@ -30,9 +29,13 @@ void Enemy::Create(const Info & info)
 	aabb->Create(Vector2D(0.8f, 0.9f));
 	AnimationComponent* animation = AddComponent<AnimationComponent>();
 	std::vector<std::string> textureNames;
+	EnemyAIComponent* ai = AddComponent<EnemyAIComponent>();
+	ai->Create();
 	if (m_info.type == BEE)
 		textureNames = { "enemy02A.png", "enemy02B.png" };
-	else if (m_info.type == BOSS)
+	if (m_info.type == BUG)
+		textureNames = { "enemy03A.png", "enemy03B.png" };
+	if (m_info.type == BOSS)
 		textureNames = { "enemy01A.png", "enemy01B.png" };
 	animation->Create(textureNames, 0.5f, AnimationComponent::LOOP);
 
@@ -57,12 +60,17 @@ void Enemy::OnEvent(const Event & event)
 		if (event.sender->GetTag() == "playermissile")
 		{
 			Explosion* explosion = m_scene->AddEntity<Explosion>();
-			explosion->Create(m_transform.position);
+			explosion->Create(m_transform.position, Explosion::eType::ENEMY);
 
 			SetState(Entity::DESTROY);
 			Event _event;
 			_event.eventID = "add_score";
-			_event.variant.asInt = 100;
+			if (m_info.type == BEE)
+				_event.variant.asInt = 100;
+			if (m_info.type == BUG)
+				_event.variant.asInt = 200;
+			if (m_info.type == BOSS)
+				_event.variant.asInt = 500;
 			_event.variant.type = Variant::INTEGER;
 			EventManager::Instance()->SendGameMessage(_event);
 		}
@@ -72,7 +80,7 @@ void Enemy::OnEvent(const Event & event)
 void EnterPathState::Enter()
 {
 	WaypointControllerComponent* waypointController = m_owner->GetOwner()->AddComponent<WaypointControllerComponent>();
-	waypointController->Create(m_owner->GetOwner<Enemy>()->m_info.speed, Enemy::m_enterPath);
+	waypointController->Create(m_owner->GetOwner<Enemy>()->m_info.speed, m_owner->GetOwner<Enemy>()->m_info.formation->GetEnterPath(m_owner->GetOwner<Enemy>()->m_info.side), 5.0f, true);
 }
 
 void EnterPathState::Update()
@@ -94,7 +102,7 @@ void EnterPathState::Exit()
 void EnterFormationState::Enter()
 {
 	WaypointControllerComponent* waypointController = m_owner->GetOwner()->AddComponent<WaypointControllerComponent>();
-	waypointController->Create(m_owner->GetOwner<Enemy>()->m_info.speed, std::vector<Vector2D> { m_owner->GetOwner<Enemy>()->m_info.target } );
+	waypointController->Create(m_owner->GetOwner<Enemy>()->m_info.speed, std::vector<Vector2D> { m_owner->GetOwner<Enemy>()->m_info.target }, 5.0f);
 }
 
 void EnterFormationState::Update()
@@ -140,7 +148,7 @@ void IdleState::Exit()
 void AttackState::Enter()
 {
 	WaypointControllerComponent* waypointController = m_owner->GetOwner()->AddComponent<WaypointControllerComponent>();
-	waypointController->Create(m_owner->GetOwner<Enemy>()->m_info.speed, Enemy::m_enterPath);
+	waypointController->Create(m_owner->GetOwner<Enemy>()->m_info.speed, m_owner->GetOwner<Enemy>()->m_info.formation->GetRandomAttackPath(), 5.0f);
 }
 
 void AttackState::Update()

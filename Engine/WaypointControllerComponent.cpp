@@ -3,10 +3,11 @@
 #include "Timer.h"
 #include  "DebugDraw.h"
 
-void WaypointControllerComponent::Create(float speed, const std::vector<Vector2D>& points)
+void WaypointControllerComponent::Create(float speed, const std::vector<Vector2D>& points, float turnRate, bool setPosAtStart)
 {
 	m_speed = speed;
-	m_cooldown = Math::GetRandomRange(m_firerateMin, m_firerateMax);
+	m_turnRate = turnRate;
+	//m_cooldown = Math::GetRandomRange(m_firerateMin, m_firerateMax);
 
 	for (Vector2D point : points)
 	{
@@ -17,6 +18,11 @@ void WaypointControllerComponent::Create(float speed, const std::vector<Vector2D
 
 	m_waypointIndex = 0;
 	m_waypoint = m_waypoints[m_waypointIndex];
+
+	if (setPosAtStart)
+	{
+		m_owner->GetTransform().position = m_waypoint->GetTransform().position;
+	}
 }
 
 void WaypointControllerComponent::Destroy()
@@ -37,7 +43,7 @@ void WaypointControllerComponent::Update()
 
 	DEBUG_DRAW_LINE(m_owner->GetTransform().position, m_waypoint->GetTransform().position, Color::red);
 
-	m_cooldown -= Timer::Instance()->DeltaTime();
+	//m_cooldown -= Timer::Instance()->DeltaTime();
 	Vector2D direction = m_waypoint->GetTransform().position - m_owner->GetTransform().position;
 	float rotation = (Vector2D::GetAngle(direction) * Math::RadiansToDegrees + 90.0f);
 

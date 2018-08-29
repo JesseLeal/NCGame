@@ -4,6 +4,9 @@
 #include "SpriteComponent.h"
 #include "InputManager.h"
 #include "Enemy.h"
+#include "Formation.h"
+#include "Timer.h"
+#include "Ship.h"
 
 void TitleState::Enter()
 {
@@ -22,7 +25,7 @@ void TitleState::Update()
 {
 	if (InputManager::Instance()->GetActionButton("start") == InputManager::eButtonState::PRESSED)
 	{
-		m_owner->SetState("game");
+		m_owner->SetState("enterstage");
 	}
 }
 
@@ -35,29 +38,61 @@ void TitleState::Exit()
 	}
 }
 
+void EnterStageState::Enter()
+{
+	//Timer::Instance()->Reset();
+	Formation* formation = dynamic_cast<Formation*>(m_owner->GetScene()->FindEntity("formation"));
+	if (formation == nullptr)
+	{
+		formation = m_owner->GetScene()->AddEntity<Formation>("formation");
+		formation->Create();
+	}
+}
+
+void EnterStageState::Update()
+{
+	Formation* formation = dynamic_cast<Formation*>(m_owner->GetScene()->FindEntity("formation"));
+	formation->Update();
+
+	Entity* ship = m_owner->GetScene()->FindEntity("player");
+	if (ship == nullptr)
+	{
+		m_timer += Timer::Instance()->DeltaTime();
+		if (m_timer >= m_respawnTimer)//&& the player has lives left
+		{
+			Ship* newShip = new Ship(m_owner->GetScene(), "player");
+			newShip->Create(Vector2D(400.0f, 500.0f));
+			m_owner->GetScene()->AddEntity(newShip);
+
+			m_timer = 0.0f;
+		}
+		if (m_timer >= m_gameOverTimer)
+		{
+			//show a game over
+		}
+		if (m_timer >= m_resetTimer)
+		{
+			//get back to title screen
+		}
+	}
+}
+
+void EnterStageState::Exit()
+{
+	
+}
+
 void GameState::Enter()
 {
-	std::vector<Enemy::Info> squadron =
-	{	{ Enemy::eType::BEE, Enemy::eSide::LEFT, 400.0f, Vector2D(100.0f, 100.0f) },
-		{ Enemy::eType::BEE, Enemy::eSide::RIGHT, 400.0f, Vector2D(180.0f, 100.0f) },
-		{ Enemy::eType::BOSS, Enemy::eSide::LEFT, 400.0f, Vector2D(260.0f, 100.0f) },
-		{ Enemy::eType::BEE, Enemy::eSide::RIGHT, 400.0f, Vector2D(400.0f, 100.0f) },
-		{ Enemy::eType::BEE, Enemy::eSide::LEFT, 400.0f, Vector2D(340.0f, 100.0f) },
-	};
-	for (Enemy::Info info : squadron)
-	{
-		Enemy* enemy = new Enemy(m_owner->GetScene());
-		enemy->Create(info);
-		m_owner->GetScene()->AddEntity(enemy);
-	}
+	
 }
 
 void GameState::Update()
 {
-
+	
 }
 
 void GameState::Exit()
 {
-	//destroy the universe
+	
 }

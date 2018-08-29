@@ -10,13 +10,16 @@ public:
 	enum eType
 	{
 		BEE,
+		BUG,
 		BOSS
 	};
 
 	enum eSide
 	{
-		LEFT,
-		RIGHT
+		LEFT_TOP,
+		RIGHT_TOP,
+		LEFT_LOW,
+		RIGHT_LOW
 	};
 
 	struct Info
@@ -25,6 +28,7 @@ public:
 		eSide side;
 		float speed;
 		Vector2D target;
+		class Formation* formation;
 	};
 
 public:
@@ -73,8 +77,8 @@ public:
 	void Exit();
 
 protected:
-	float m_timeMin = 2.0f;
-	float m_timeMax = 4.0f;
+	float m_timeMin = 6.0f;
+	float m_timeMax = 14.0f;
 	float m_timer = 0.0f;
 };
 

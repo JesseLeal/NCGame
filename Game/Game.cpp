@@ -31,28 +31,20 @@ bool Game::Initialize()
 	m_scene = new Scene();
 	m_stateMachine = new StateMachine(m_scene);
 	m_stateMachine->AddState("title", new TitleState(m_stateMachine));
+	m_stateMachine->AddState("enterstage", new EnterStageState(m_stateMachine));
 	m_stateMachine->AddState("game", new GameState(m_stateMachine));
 	m_stateMachine->SetState("title");
 
 	Entity* entity = new Entity(m_scene, "score");
 	entity->GetTransform().position = Vector2D(20.0f, 20.0f);
 	TextComponent* textcomp = entity->AddComponent<TextComponent>();
-	textcomp->Create("00000", "emulogic.ttf", 18, Color::white);
+	textcomp->Create("0", "emulogic.ttf", 18, Color::white);
 	textcomp->SetDepth(100);
 	m_scene->AddEntity(entity);
 
 	Ship* ship = new Ship(m_scene, "player");
 	ship->Create(Vector2D(400.0f, 500.0f));
 	m_scene->AddEntity(ship);
-
-	/*for (size_t i = 0; i < 10; i++)
-	{
-		Enemy* enemy = new Enemy(m_scene);
-		float x = Math::GetRandomRange(200.0f, 600.0f);
-		float y = Math::GetRandomRange(0.0f, 60.0f);
-		enemy->Create(Vector2D(x, y));
-		m_scene->AddEntity(enemy);
-	}*/
 
 	m_running = true;
 
@@ -96,3 +88,5 @@ void Game::OnEvent(const Event & event)
 		m_score += event.variant.asInt;
 	}
 }
+
+// The End

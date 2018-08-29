@@ -40,6 +40,8 @@ public:
 		return m_paused;
 	}
 
+	void Reset();
+
 	friend Singleton<Timer>;
 
 protected:

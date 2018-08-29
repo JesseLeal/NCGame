@@ -1,14 +1,11 @@
 ﻿  Enemy.cpp
   EnemyAIComponent.cpp
-  EnemyExplosion.cpp
-  EnemyTargetControllerComponent.cpp
-  EnemyWaypointControllerComponent.cpp
+  Explosion.cpp
+  Formation.cpp
   Game.cpp
-  Main.cpp
   Missile.cpp
   Ship.cpp
   ShipControllerComponent.cpp
   States.cpp
-  TransformControllerComponent.cpp
   Generating Code...
   Game.vcxproj -> C:\Users\Jesse Leal\source\repos\Game Libraries\NCGame\x64\Debug\Game.exe

@@ -1,18 +1,12 @@
 ﻿  Enemy.cpp
-  EnemyAIComponent.cpp
-  EnemyExplosion.cpp
-  EnemyTargetControllerComponent.cpp
-  EnemyWaypointControllerComponent.cpp
+  Explosion.cpp
+  Formation.cpp
   Game.cpp
-  Main.cpp
-  Missile.cpp
   Ship.cpp
-  ShipControllerComponent.cpp
   States.cpp
-  TransformControllerComponent.cpp
   Generating code
-  561 of 561 functions (100.0%) were compiled.
-    560 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  80 of 482 functions (16.6%) were compiled, the rest were copied from previous compilation.
+    9 functions were new in current compilation
+    66 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Game.vcxproj -> C:\Users\Jesse Leal\source\repos\Game Libraries\NCGame\x64\Release\Game.exe

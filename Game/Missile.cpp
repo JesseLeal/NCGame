@@ -18,7 +18,7 @@ void Missile::Create(const Vector2D & position, const Vector2D & direction, floa
 	else if (tag == "enemymissile")
 		spriteComp->Create("missile02.png", Vector2D(0.5f, 0.5f));
 	KinematicComponent* kinematic = AddComponent<KinematicComponent>();
-	kinematic->Create(500.0f, 0.9f);
+	kinematic->Create(1000.0f, 0.9f);
 	AABBComponent* aabb = AddComponent<AABBComponent>();
 	aabb->Create(Vector2D(0.6f, 0.9f));
 

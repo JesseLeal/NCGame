@@ -5,6 +5,7 @@
 #include "Renderer.h"
 #include "AabbComponent.h"
 #include "AudioSystem.h"
+#include "Explosion.h"
 
 void Ship::Create(const Vector2D & position)
 {
@@ -23,7 +24,6 @@ void Ship::Create(const Vector2D & position)
 	aabb->Create();
 
 	AudioSystem::Instance()->AddSound("laser", "laser.wav");
-	AudioSystem::Instance()->AddSound("shipExplode", "ship-explosion.wav");
 }
 
 void Ship::Update()
@@ -40,7 +40,8 @@ void Ship::OnEvent(const Event & event)
 	{
 		if (event.sender->GetTag() == "enemy" || event.sender->GetTag() == "enemymissile")
 		{
-			AudioSystem::Instance()->PlaySound("shipExplode", false);
+			Explosion* explosion = m_scene->AddEntity<Explosion>();
+			explosion->Create(m_transform.position, Explosion::eType::PLAYER);
 			SetState(Entity::DESTROY);
 		}
 	}
